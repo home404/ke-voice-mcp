@@ -23,7 +23,7 @@ async function generateAudio(text: string): Promise<{
 }> {
   try {
     const voiceId = process.env.ELEVENLABS_VOICE_ID!;
-    const model = process.env.ELEVENLABS_MODEL || "eleven_v3_conversational";
+    const model = process.env.ELEVENLABS_MODEL || "eleven_v3";
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`;
 
     const response = await fetch(url, {
@@ -36,9 +36,9 @@ async function generateAudio(text: string): Promise<{
       body: JSON.stringify({
         text,
         model_id: model,
-        speed: parseFloat(process.env.ELEVENLABS_SPEED || "1.22"),
+        speed: parseFloat(process.env.ELEVENLABS_SPEED || "1.16"),
         voice_settings: {
-          stability: parseFloat(process.env.ELEVENLABS_STABILITY || "0.30"),
+          stability: parseFloat(process.env.ELEVENLABS_STABILITY || "0.34"),
           similarity_boost: parseFloat(
             process.env.ELEVENLABS_SIMILARITY || "0.85"
           ),
